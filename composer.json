@@ -1,0 +1,21 @@
+{
+    "name": "xiaoqingping/ip-region",
+    "description": "IP归属地查询",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "肖庆平",
+            "email": "xiaoqingping@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php" : ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "IpRegion\\": "src/IpRegion"
+        }
+    }
+}
