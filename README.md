@@ -6,6 +6,11 @@
 * 去除全局常量定义，改为类的const变量
 * 增加静态调用方法
 
+## 安装
+```
+composer require xiaoqingping/ip-region
+```
+
 ## 用法
 实例化调用
 ```php
