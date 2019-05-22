@@ -8,7 +8,20 @@
 
 ## 安装
 ```
-composer require xiaoqingping/ip-region
+composer require xiaoqingping/ip-region:dev-master
+```
+或
+编辑composer.json
+```
+{
+    "require": {
+        "xiaoqingping/ip-region": "dev-master"
+    }
+}
+```
+然后执行命令
+```
+composer install
 ```
 
 ## 用法
