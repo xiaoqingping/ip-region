@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "IpRegion\\": "src/IpRegion"
+            "Lemon\\": "src/IpRegion"
         }
     }
 }

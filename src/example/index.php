@@ -1,7 +1,7 @@
 <?php
 require_once '../../vendor/autoload.php';
 
-use IpRegion\IpRegion;
+use Lemon\IpRegion;
 
 var_dump(IpRegion::search('27.151.96.22'));  // 默认btree查询
 var_dump(IpRegion::search('27.151.96.22', 'btree'));

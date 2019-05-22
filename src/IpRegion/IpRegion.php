@@ -1,5 +1,5 @@
 <?php
-namespace IpRegion;
+namespace Lemon;
 
 class IpRegion
 {
