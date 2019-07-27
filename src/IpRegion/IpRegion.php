@@ -36,7 +36,7 @@ class IpRegion
     */
     public function __construct($ip2regionFile = null)
     {
-        $this->dbFile = $ip2regionFile ?? __DIR__ . '/ip2region.db';
+        $this->dbFile = $ip2regionFile ? $ip2regionFile : __DIR__ . '/ip2region.db';
     }
 
     /**
@@ -89,9 +89,15 @@ class IpRegion
         //get the data
         $dataLen = (($dataPtr >> 24) & 0xFF);
         $dataPtr = ($dataPtr & 0x00FFFFFF);
+        
+        $region = substr($this->dbBinStr, $dataPtr + 4, $dataLen - 4);
+        $region = explode('|', $region);
+
         return [
-            'city_id' => self::getLong($this->dbBinStr, $dataPtr),
-            'region'  => substr($this->dbBinStr, $dataPtr + 4, $dataLen - 4)
+            'country' => $region[0],
+            'province' => $region[2],
+            'city' => $region[3],
+            'isp' => $region[4],
         ];
     }
 
@@ -152,9 +158,15 @@ class IpRegion
         $dataPtr = ($dataPtr & 0x00FFFFFF);
         fseek($this->dbFileHandler, $dataPtr);
         $data = fread($this->dbFileHandler, $dataLen);
+
+        $region = substr($data, 4);
+        $region = explode('|', $region);
+        
         return [
-            'city_id' => self::getLong($data, 0),
-            'region'  => substr($data, 4)
+            'country' => $region[0],
+            'province' => $region[2],
+            'city' => $region[3],
+            'isp' => $region[4],
         ];
     }
 
@@ -286,9 +298,15 @@ class IpRegion
         
         fseek($this->dbFileHandler, $dataPtr);
         $data = fread($this->dbFileHandler, $dataLen);
+
+        $region = substr($data, 4);
+        $region = explode('|', $region);
+        
         return [
-            'city_id' => self::getLong($data, 0),
-            'region'  => substr($data, 4)
+            'country' => $region[0],
+            'province' => $region[2],
+            'city' => $region[3],
+            'isp' => $region[4],
         ];
     }
 
